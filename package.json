@@ -14,13 +14,20 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "yarn lint && NODE_ENV=production tsc",
+    "build": "npm run lint && tsc && NODE_ENV=production rollup -c && cp demo/index.html dist/",
     "fix": "tslint -p tsconfig.json --fix",
     "lint": "tslint -p tsconfig.json"
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "tslint": "^5.9.1",
-    "typescript": "^2.6.2"
+    "typescript": "^2.6.2",
+    "rollup": "^0.57.0",
+    "rollup-plugin-babel-minify": "^4.0.0",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-node-resolve": "^3.2.0",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-typescript2": "^0.12.0"
   }
 }
