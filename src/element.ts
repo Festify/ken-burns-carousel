@@ -6,6 +6,9 @@ const enum Attributes {
     SlideDuration = 'slide-duration',
 }
 
+/**
+ * Specifies the direction of the ken burns effect.
+ */
 export const enum Direction {
     Normal = 'normal',
     Reverse = 'reverse',
@@ -100,6 +103,13 @@ const defaultAnimationNames = [
     'ken-burns-center',
 ];
 
+/**
+ * `ken-burns-slideshow`
+ *
+ * Displays a set of images in a smoothly-fading ken burns style slideshow.
+ *
+ * @demo ../demo/index.html
+ */
 export default class KenBurnsSlideshow extends HTMLElement {
     static get observedAttributes(): string[] {
         return [
@@ -111,7 +121,30 @@ export default class KenBurnsSlideshow extends HTMLElement {
         ];
     }
 
+    /**
+     * Specifies the list of ken burns animations to apply to the elements.
+     *
+     * This allows customizing the built-in animations to your liking by overriding
+     * the ones you don't like with custom CSS animations.
+     *
+     * This can also be set via setting the `animation-names`-attribute to a space-
+     * separated list of CSS animation names.
+     *
+     * @type String[]
+     */
     animationNames: string[] = defaultAnimationNames.slice();
+
+    /**
+     * The direction to play the animations in.
+     *
+     * Defaults to Direction.Random, meaning that with each image the associated ken
+     * burns animation is either played forwards or backwards adding additional visual
+     * diversity.
+     *
+     * This can also be set via the `animation-direction`-attribute.
+     *
+     * @type Direction
+     */
     animationDirection: Direction = Direction.Random;
 
     private _fadeDuration: number = 2500;
@@ -120,6 +153,14 @@ export default class KenBurnsSlideshow extends HTMLElement {
     private _timeout: number = 0;
     private _wrapper: Element;
 
+    /**
+     * The duration of the crossfading animation in millseconds.
+     *
+     * Must be smaller than the slide duration. Defaults to 2500ms.
+     * This can also be set via the `fade-duration`-attribute.
+     *
+     * @type number
+     */
     get fadeDuration() {
         return this._fadeDuration;
     }
@@ -132,6 +173,14 @@ export default class KenBurnsSlideshow extends HTMLElement {
         this._fadeDuration = val;
     }
 
+    /**
+     * The list of URLs to the images to display.
+     *
+     * You can either set this property directly, or set a the `images`-attribute
+     * to a space-separated list of URLs.
+     *
+     * @type string[]
+     */
     get images(): string[] {
         return this._imgList;
     }
@@ -147,6 +196,14 @@ export default class KenBurnsSlideshow extends HTMLElement {
         }
     }
 
+    /**
+     * The duration of the sliding (or ken burns) animation in millseconds.
+     *
+     * Must be greater than or equal to the fade duration. Defaults to 20s.
+     * This can also be set via the `slide-duration`-attribute.
+     *
+     * @type number
+     */
     get slideDuration() {
         return this._slideDuration;
     }
