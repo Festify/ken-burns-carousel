@@ -1,0 +1,26 @@
+{
+  "name": "ken-burns-slideshow",
+  "version": "0.1.0",
+  "description": "Web component displaying an image slideshow with ken burns effect",
+  "main": "dist/ken-burns-slideshow.js",
+  "repository": "https://github.com/Festify/ken-burns-slideshow",
+  "bugs": "https://github.com/Festify/ken-burns-slideshow/issues",
+  "author": "Festify Dev Team <mail+git@festify.rocks>",
+  "keywords": [
+    "animation",
+    "ken burns",
+    "web components"
+  ],
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "yarn lint && NODE_ENV=production tsc",
+    "fix": "tslint -p tsconfig.json --fix",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "tslint": "^5.9.1",
+    "typescript": "^2.6.2"
+  }
+}
