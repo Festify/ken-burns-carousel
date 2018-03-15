@@ -91,7 +91,7 @@ const html = `
 <div id="wrapper"></div>
 `;
 
-const defaultAnimationNames = [
+export const animationNames = [
     'ken-burns-bottom-right',
     'ken-burns-top-left',
     'ken-burns-bottom-left',
@@ -132,7 +132,7 @@ export default class KenBurnsSlideshow extends HTMLElement {
      *
      * @type String[]
      */
-    animationNames: string[] = defaultAnimationNames.slice();
+    animationNames: string[] = animationNames;
 
     /**
      * The direction to play the animations in.
