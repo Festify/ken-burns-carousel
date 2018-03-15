@@ -43,47 +43,47 @@ const html = `
 
     @keyframes ken-burns-bottom-right {
         to {
-            transform: scale(1.5) translate(-10%, -7%);
+            transform: scale3d(1.5, 1.5, 1.5) translate3d(-10%, -7%, 0);
         }
     }
     @keyframes ken-burns-top-right {
         to {
-            transform: scale(1.5) translate(-10%, 7%);
+            transform: scale3d(1.5, 1.5, 1.5) translate3d(-10%, 7%, 0);
         }
     }
     @keyframes ken-burns-top-left {
         to {
-            transform: scale(1.5) translate(10%, 7%);
+            transform: scale3d(1.5, 1.5, 1.5) translate3d(10%, 7%, 0);
         }
     }
     @keyframes ken-burns-bottom-left {
         to {
-            transform: scale(1.5) translate(10%, -7%);
+            transform: scale3d(1.5, 1.5, 1.5) translate3d(10%, -7%, 0);
         }
     }
     @keyframes ken-burns-middle-left {
         to {
-            transform: scale(1.5) translate(10%, 0);
+            transform: scale3d(1.5, 1.5, 1.5) translate3d(10%, 0, 0);
         }
     }
     @keyframes ken-burns-middle-right {
         to {
-            transform: scale(1.5) translate(-10%, 0);
+            transform: scale3d(1.5, 1.5, 1.5) translate3d(-10%, 0, 0);
         }
     }
     @keyframes ken-burns-top-middle {
         to {
-            transform: scale(1.5) translate(0, 10%);
+            transform: scale3d(1.5, 1.5, 1.5) translate3d(0, 10%, 0);
         }
     }
     @keyframes ken-burns-bottom-middle {
         to {
-            transform: scale(1.5) translate(0, -10%);
+            transform: scale3d(1.5, 1.5, 1.5) translate3d(0, -10%, 0);
         }
     }
     @keyframes ken-burns-center {
         to {
-            transform: scale(1.5);
+            transform: scale3d(1.5, 1.5, 1.5);
         }
     }
 </style>

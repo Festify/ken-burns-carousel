@@ -1,6 +1,6 @@
 {
   "name": "ken-burns-carousel",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Web component displaying an image carousel with ken burns effect",
   "main": "dist/ken-burns-carousel.js",
   "repository": "https://github.com/Festify/ken-burns-carousel",
