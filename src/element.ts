@@ -231,13 +231,17 @@ export default class KenBurnsSlideshow extends HTMLElement {
                 this.animationDirection = newVal as Direction;
                 break;
             case Attributes.AnimationNames:
-                this.animationNames = newVal ? newVal.split(' ') : defaultAnimationNames;
+                this.animationNames = newVal
+                    ? newVal.split(' ').filter(name => name)
+                    : animationNames;
                 break;
             case Attributes.FadeDuration:
                 this.fadeDuration = Number(newVal);
                 break;
             case Attributes.Images:
-                this.images = newVal ? newVal.split(' ') : [];
+                this.images = newVal
+                    ? newVal.split(' ').filter(url => url)
+                    : [];
                 break;
             case Attributes.SlideDuration:
                 this.slideDuration = Number(newVal);
