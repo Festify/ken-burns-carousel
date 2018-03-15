@@ -22,6 +22,7 @@ const html = `
     }
 
     img {
+        filter: var(--img-filter);
         height: 100%;
         object-fit: cover;
         position: absolute;
