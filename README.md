@@ -1,10 +1,12 @@
-# ken-burns-carousel
+# \<ken-burns-carousel\>
 [![Travis](https://travis-ci.org/Festify/ken-burns-carousel.svg?branch=master)](https://travis-ci.org/Festify/ken-burns-carousel)
 
-A bare and extremely light web component that displays a set of images with a ken burns effect.
+A bare and extremely light web component that displays a set of images with a ken burns effect. [Demo](https://festify.github.io/ken-burns-carousel/).
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/1683034/37485135-e91fc698-288a-11e8-973b-999f86d3fd97.gif">
+  <a href="https://festify.github.io/ken-burns-carousel/">
+    <img src="https://user-images.githubusercontent.com/1683034/37485135-e91fc698-288a-11e8-973b-999f86d3fd97.gif">
+  </a>
 </p>
 
 ## Usage
@@ -14,7 +16,7 @@ A bare and extremely light web component that displays a set of images with a ke
 </ken-burns-carousel>
 ```
 
-And the carousel will begin ✨.
+And the carousel will begin fading images ✨. See the [Demo](https://festify.github.io/ken-burns-carousel/) for more examples.
 
 ## Performance
 The element preloads images before displaying them so that FOUCs can be prevented. This also works across different image lists.
