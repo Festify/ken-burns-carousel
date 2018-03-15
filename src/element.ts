@@ -104,13 +104,13 @@ export const animationNames = [
 ];
 
 /**
- * `ken-burns-slideshow`
+ * `ken-burns-carousel`
  *
- * Displays a set of images in a smoothly-fading ken burns style slideshow.
+ * Displays a set of images in a smoothly-fading ken burns style carousel.
  *
  * @demo ../demo/index.html
  */
-export default class KenBurnsSlideshow extends HTMLElement {
+export default class KenBurnsCarousel extends HTMLElement {
     static get observedAttributes(): string[] {
         return [
             Attributes.AnimationDirection,

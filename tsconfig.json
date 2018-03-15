@@ -17,6 +17,6 @@
     "downlevelIteration": true
   },
   "files": [
-    "src/ken-burns-slideshow.ts"
+    "src/ken-burns-carousel.ts"
   ]
 }
