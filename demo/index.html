@@ -183,26 +183,31 @@
     <p>Made with ❤️ by <a href="https://github.com/Festify" target="_blank">Team Festify</a> in Aachen, Germany</p>
 </footer>
 
-<script src="ken-burns-carousel.min.js"></script>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 
 <script>
     hljs.initHighlightingOnLoad();
 
-    // Feed demo with sample images
-    const sampleImages = [
-        'https://source.unsplash.com/Qh9Swf_8DyA',
-        'https://source.unsplash.com/O453M2Liufs',
-        'https://source.unsplash.com/1OtUkD_8svc',
-        'https://source.unsplash.com/gIgciC_WKnY',
-        'https://source.unsplash.com/LCguCXU3Ffk',
-    ];
+    window.addEventListener('WebComponentsReady', function(e) {
+        const kenBurnsCarousel = document.createElement('script');
+        kenBurnsCarousel.src = 'ken-burns-carousel.min.js';
+        document.head.appendChild(kenBurnsCarousel);
 
-    const demos = document.getElementsByTagName('ken-burns-carousel');
-    for(let demo of demos) {
-        demo.images = sampleImages;
-    }
+        // Feed demo with sample images
+        const sampleImages = [
+            'https://source.unsplash.com/Qh9Swf_8DyA',
+            'https://source.unsplash.com/O453M2Liufs',
+            'https://source.unsplash.com/1OtUkD_8svc',
+            'https://source.unsplash.com/gIgciC_WKnY',
+            'https://source.unsplash.com/LCguCXU3Ffk',
+        ];
+
+        const demos = document.getElementsByTagName('ken-burns-carousel');
+        for(let demo of demos) {
+            demo.images = sampleImages;
+        }
+    });
 </script>
 </body>
 </html>
