@@ -194,18 +194,20 @@
         kenBurnsCarousel.src = 'ken-burns-carousel.min.js';
         document.head.appendChild(kenBurnsCarousel);
 
-        // Feed demo with sample images
-        const sampleImages = [
-            'https://source.unsplash.com/Qh9Swf_8DyA',
-            'https://source.unsplash.com/O453M2Liufs',
-            'https://source.unsplash.com/1OtUkD_8svc',
-            'https://source.unsplash.com/gIgciC_WKnY',
-            'https://source.unsplash.com/LCguCXU3Ffk',
-        ];
+        kenBurnsCarousel.onload = () => {
+            // Feed demo with sample images
+            const sampleImages = [
+                'https://source.unsplash.com/Qh9Swf_8DyA',
+                'https://source.unsplash.com/O453M2Liufs',
+                'https://source.unsplash.com/1OtUkD_8svc',
+                'https://source.unsplash.com/gIgciC_WKnY',
+                'https://source.unsplash.com/LCguCXU3Ffk',
+            ];
 
-        const demos = document.getElementsByTagName('ken-burns-carousel');
-        for(let demo of demos) {
-            demo.images = sampleImages;
+            const demos = document.getElementsByTagName('ken-burns-carousel');
+            for(let demo of demos) {
+                demo.images = sampleImages;
+            }
         }
     });
 </script>
