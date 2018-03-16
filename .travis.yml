@@ -7,7 +7,7 @@ script: yarn build
 after_script: greenkeeper-lockfile-upload
 
 before_deploy:
-  - zip -rv compiled-source.zip dist/*
+  - zip -rv bundle.zip dist/*
 
 deploy:
   - provider: npm
