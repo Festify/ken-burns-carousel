@@ -1,11 +1,3 @@
-const enum Attributes {
-    AnimationDirection = 'animation-direction',
-    AnimationNames = 'animation-names',
-    FadeDuration = 'fade-duration',
-    Images = 'images',
-    SlideDuration = 'slide-duration',
-}
-
 /**
  * Specifies the direction of the ken burns effect.
  */
@@ -29,6 +21,14 @@ export const animationNames = [
     'ken-burns-bottom-middle',
     'ken-burns-center',
 ];
+
+const enum Attributes {
+    AnimationDirection = 'animation-direction',
+    AnimationNames = 'animation-names',
+    FadeDuration = 'fade-duration',
+    Images = 'images',
+    SlideDuration = 'slide-duration',
+}
 
 const template = document.createElement('template') as HTMLTemplateElement;
 template.innerHTML = `
