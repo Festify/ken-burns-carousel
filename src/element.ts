@@ -251,8 +251,6 @@ export default class KenBurnsCarousel extends HTMLElement {
 
     private animate(images: string[]) {
         const insert = (index: number, el: HTMLImageElement) => {
-            const url = images[index];
-
             const random = Math.random();
             const animationIndex = Math.floor(random * this.animationNames.length);
             const direction = this.animationDirection === Direction.Random
