@@ -15,6 +15,9 @@ export const enum Direction {
     Random = 'random',
 }
 
+/**
+ * All available ken burns CSS animations.
+ */
 export const animationNames = [
     'ken-burns-bottom-right',
     'ken-burns-top-left',
