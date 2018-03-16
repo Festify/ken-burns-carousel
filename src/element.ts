@@ -15,7 +15,20 @@ export const enum Direction {
     Random = 'random',
 }
 
-const html = `
+export const animationNames = [
+    'ken-burns-bottom-right',
+    'ken-burns-top-left',
+    'ken-burns-bottom-left',
+    'ken-burns-top-right',
+    'ken-burns-middle-left',
+    'ken-burns-middle-right',
+    'ken-burns-top-middle',
+    'ken-burns-bottom-middle',
+    'ken-burns-center',
+];
+
+const template = document.createElement('template') as HTMLTemplateElement;
+template.innerHTML = `
 <style>
     div {
         height: 100%;
@@ -91,17 +104,9 @@ const html = `
 <div id="wrapper"></div>
 `;
 
-export const animationNames = [
-    'ken-burns-bottom-right',
-    'ken-burns-top-left',
-    'ken-burns-bottom-left',
-    'ken-burns-top-right',
-    'ken-burns-middle-left',
-    'ken-burns-middle-right',
-    'ken-burns-top-middle',
-    'ken-burns-bottom-middle',
-    'ken-burns-center',
-];
+if (typeof (window as any).ShadyCSS === 'object') {
+    (window as any).ShadyCSS.prepareTemplate(template, 'ken-burns-carousel');
+}
 
 /**
  * `ken-burns-carousel`
@@ -220,7 +225,7 @@ export default class KenBurnsCarousel extends HTMLElement {
         super();
 
         this.attachShadow({ mode: 'open' });
-        this.shadowRoot!.innerHTML = html;
+        this.shadowRoot!.appendChild(template.content.cloneNode(true));
 
         this._wrapper = this.shadowRoot!.getElementById('wrapper')!;
     }
@@ -246,6 +251,12 @@ export default class KenBurnsCarousel extends HTMLElement {
             case Attributes.SlideDuration:
                 this.slideDuration = Number(newVal);
                 break;
+        }
+    }
+
+    connectedCallback() {
+        if (typeof (window as any).ShadyCSS === 'object') {
+            (window as any).ShadyCSS.styleElement(this);
         }
     }
 
