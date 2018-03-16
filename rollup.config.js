@@ -9,7 +9,7 @@ export default {
     output: {
         file: 'dist/ken-burns-carousel.min.js',
         format: 'umd',
-        name: 'KenBurnsSlideshow',
+        name: 'KenBurnsCarousel',
         sourcemap: true,
     },
     plugins: [
