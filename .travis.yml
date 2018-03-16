@@ -6,6 +6,9 @@ before_script: greenkeeper-lockfile-update
 script: yarn build
 after_script: greenkeeper-lockfile-upload
 
+before_deploy:
+  - zip -rv compiled-source.zip dist/*
+
 deploy:
   - provider: npm
     email: $NPM_DPL_EMAIL
@@ -20,3 +23,9 @@ deploy:
     local-dir: dist
     on:
      branch: master
+  - provider: releases
+    api_key: $GITHUB_TOKEN
+    file: bundle.zip
+    skip_cleanup: true
+    on:
+      tags: true
