@@ -1,5 +1,4 @@
 language: node_js
-cache: yarn
 node_js: node
 
 before_install: yarn global add greenkeeper-lockfile@1
