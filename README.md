@@ -18,6 +18,11 @@ A bare and extremely light web component that displays a set of images with a ke
 
 And the carousel will begin fading images ✨. See the [Demo](https://festify.github.io/ken-burns-carousel/) for more examples.
 
+## Compatibility
+The element works in all evergreen browsers (tested on Firefox, Chrome, Safari and Edge). Mileage with other browsers may vary.
+
+That said, the element does not do any complex DOM operations or use any fancy APIs (except for web components, of course), so adapting it, if needed, will be simple. The element has been adapted for usage with the ShadyDOM polyfill.
+
 ## Performance
 The element preloads images before displaying them so that FOUCs can be prevented. This also works across different image lists.
 
