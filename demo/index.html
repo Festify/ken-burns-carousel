@@ -204,8 +204,7 @@
                 'https://source.unsplash.com/LCguCXU3Ffk',
             ];
 
-            const demos = document.getElementsByTagName('ken-burns-carousel');
-            for(let demo of demos) {
+            for (const demo of Array.from(document.getElementsByTagName('ken-burns-carousel'))) {
                 demo.images = sampleImages;
             }
         }
