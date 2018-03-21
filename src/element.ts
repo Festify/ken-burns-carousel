@@ -160,6 +160,7 @@ export default class KenBurnsCarousel extends HTMLElement {
     private _slideDuration: number = 20000;
     private _timeout: number = 0;
     private _wrapper: Element;
+    private _zCounter: number = 0;
 
     /**
      * The duration of the crossfading animation in millseconds.
@@ -275,6 +276,7 @@ export default class KenBurnsCarousel extends HTMLElement {
             el.style.animationDuration = `${this.slideDuration}ms, ${this.fadeDuration}ms`;
             el.style.animationDirection = `${direction}, normal`;
             el.style.animationTimingFunction = 'linear, ease';
+            el.style.zIndex = String(this._zCounter++);
 
             this._wrapper.appendChild(el);
             setTimeout(() => el.remove(), this.slideDuration);
