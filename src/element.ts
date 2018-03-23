@@ -199,17 +199,15 @@ export default class KenBurnsCarousel extends HTMLElement {
     }
 
     set images(images: string[]) {
-        this._imgList = images;
-
         if (arraysEqual(this._imgList, images)) {
             return;
         }
 
-        clearTimeout(this._timeout);
-        this._timeout = 0;
-
+        this._imgList = images;
         if (images.length > 0) {
             this.animate(images);
+        } else {
+            this.stop();
         }
     }
 
@@ -302,7 +300,15 @@ export default class KenBurnsCarousel extends HTMLElement {
 
         const img = document.createElement('img') as HTMLImageElement;
         img.src = images[0];
-        img.onload = () => insert(0, img);
+        img.onload = () => {
+            this.stop();
+            insert(0, img);
+        };
+    }
+
+    private stop() {
+        clearTimeout(this._timeout);
+        this._timeout = 0;
     }
 }
 
