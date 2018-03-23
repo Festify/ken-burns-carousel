@@ -283,7 +283,7 @@ export default class KenBurnsCarousel extends HTMLElement {
 
             // Preload next image and place it in browser cache
             const nextIndex = (index + 1) % images.length;
-            const next = new Image();
+            const next = document.createElement('img') as HTMLImageElement;
             next.src = images[nextIndex];
 
             this._timeout = setTimeout(
@@ -292,7 +292,7 @@ export default class KenBurnsCarousel extends HTMLElement {
             );
         };
 
-        const img = new Image();
+        const img = document.createElement('img') as HTMLImageElement;
         img.src = images[0];
         img.onload = () => insert(0, img);
     }
