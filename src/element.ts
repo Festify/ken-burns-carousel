@@ -185,8 +185,12 @@ export default class KenBurnsCarousel extends HTMLElement {
     /**
      * The list of URLs to the images to display.
      *
-     * You can either set this property directly, or set a the `images`-attribute
+     * You can either set this property directly, or set the `images`-attribute
      * to a space-separated list of URLs.
+     *
+     * The element will dirty-check this property to avoid switching to the next image
+     * even if the images set were the same. If you forcefully want to rerender, ensure
+     * you pass a different array because the dirty-check will check for identity.
      *
      * @type string[]
      */
@@ -196,6 +200,10 @@ export default class KenBurnsCarousel extends HTMLElement {
 
     set images(images: string[]) {
         this._imgList = images;
+
+        if (arraysEqual(this._imgList, images)) {
+            return;
+        }
 
         clearTimeout(this._timeout);
         this._timeout = 0;
@@ -296,4 +304,22 @@ export default class KenBurnsCarousel extends HTMLElement {
         img.src = images[0];
         img.onload = () => insert(0, img);
     }
+}
+
+function arraysEqual<T>(arr1: T[] | null, arr2: T[] | null) {
+    // tslint:disable-next-line:triple-equals
+    if (arr1 === arr2 || (!arr1 && !arr2)) { // undefined == null here
+        return true;
+    }
+    if (!arr1 || !arr2 || arr1.length !== arr2.length) {
+        return false;
+    }
+
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) {
+            return false;
+        }
+    }
+
+    return true;
 }
