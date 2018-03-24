@@ -301,6 +301,22 @@ export default class KenBurnsCarousel extends HTMLElement {
         const img = document.createElement('img') as HTMLImageElement;
         img.src = images[0];
         img.onload = () => {
+            /*
+             * Prevent race condition leading to wrong list being displayed.
+             *
+             * The problem arose when you were switching out the image list before
+             * this callback had fired. The callback of a later list could have fired
+             * faster than the one of earlier lists, which lead to the later slideshow
+             * (the right one) being cancelled when the previous one became available.
+             *
+             * We now check whether we're still displaying the list we started
+             * with and only then proceed with actually stopping the old slideshow
+             * and displaying it.
+             */
+            if (!arraysEqual(this._imgList, images)) {
+                return;
+            }
+
             this.stop();
             insert(0, img);
         };
