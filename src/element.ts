@@ -204,7 +204,7 @@ export default class KenBurnsCarousel extends HTMLElement {
 
         this._imgList = images;
         if (images.length > 0) {
-            this.animate(images);
+            this.animateImages(images);
         } else {
             this.stop();
         }
@@ -267,7 +267,7 @@ export default class KenBurnsCarousel extends HTMLElement {
         }
     }
 
-    private animate(images: string[]) {
+    private animateImages(images: string[]) {
         const insert = (index: number, img: HTMLImageElement) => {
             const random = Math.random();
             const animationIndex = Math.floor(random * this.animationNames.length);
