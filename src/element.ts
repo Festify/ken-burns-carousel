@@ -33,18 +33,20 @@ const enum Attributes {
 const template = document.createElement('template') as HTMLTemplateElement;
 template.innerHTML = `
 <style>
-    div {
-        height: 100%;
-        position: relative;
+    :host {
         overflow: hidden;
-        width: 100%;
+        position: relative;
+    }
+
+    div {
+        position: absolute;
+        will-change: transform;
     }
 
     img {
         filter: var(--img-filter);
         height: 100%;
         object-fit: cover;
-        position: absolute;
         width: 100%;
     }
 
@@ -103,8 +105,6 @@ template.innerHTML = `
         }
     }
 </style>
-
-<div id="wrapper"></div>
 `;
 
 if (typeof (window as any).ShadyCSS === 'object') {
@@ -159,7 +159,6 @@ export default class KenBurnsCarousel extends HTMLElement {
     private _imgList: string[] = [];
     private _slideDuration: number = 20000;
     private _timeout: number = 0;
-    private _wrapper: Element;
     private _zCounter: number = 0;
 
     /**
@@ -236,8 +235,6 @@ export default class KenBurnsCarousel extends HTMLElement {
 
         this.attachShadow({ mode: 'open' });
         this.shadowRoot!.appendChild(template.content.cloneNode(true));
-
-        this._wrapper = this.shadowRoot!.getElementById('wrapper')!;
     }
 
     attributeChangedCallback(name: string, oldVal: string, newVal: string) {
@@ -271,21 +268,35 @@ export default class KenBurnsCarousel extends HTMLElement {
     }
 
     private animate(images: string[]) {
-        const insert = (index: number, el: HTMLImageElement) => {
+        const insert = (index: number, img: HTMLImageElement) => {
             const random = Math.random();
             const animationIndex = Math.floor(random * this.animationNames.length);
             const direction = this.animationDirection === Direction.Random
                 ? random > .5 ? 'normal' : 'reverse'
                 : this.animationDirection;
 
-            el.style.animationName = `${this.animationNames[animationIndex]}, fade-in`;
-            el.style.animationDuration = `${this.slideDuration}ms, ${this.fadeDuration}ms`;
-            el.style.animationDirection = `${direction}, normal`;
-            el.style.animationTimingFunction = 'linear, ease';
-            el.style.zIndex = String(this._zCounter++);
+            /*
+             * Here we wrap the image element into a surrounding div that is promoted
+             * onto a separate GPU layer using `will-change: transform`. If the filter applied
+             * to the image using CSS var `img-filter` is expensive (such as `blur`) this
+             * leads the browser to pre-compute the image filter and only really apply the 3D
+             * transformation that is very cheap every frame.
+             *
+             * See https://developers.google.com/web/updates/2017/10/animated-blur for
+             * more information.
+             */
 
-            this._wrapper.appendChild(el);
-            setTimeout(() => el.remove(), this.slideDuration);
+            const wrap = document.createElement('div');
+            wrap.appendChild(img);
+
+            wrap.style.animationName = `${this.animationNames[animationIndex]}, fade-in`;
+            wrap.style.animationDuration = `${this.slideDuration}ms, ${this.fadeDuration}ms`;
+            wrap.style.animationDirection = `${direction}, normal`;
+            wrap.style.animationTimingFunction = 'linear, ease';
+            wrap.style.zIndex = String(this._zCounter++);
+
+            this.shadowRoot!.appendChild(wrap);
+            setTimeout(() => wrap.remove(), this.slideDuration);
 
             // Preload next image and place it in browser cache
             const nextIndex = (index + 1) % images.length;
