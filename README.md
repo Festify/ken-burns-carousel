@@ -24,7 +24,9 @@ The element works in all evergreen browsers (tested on Firefox, Chrome, Safari a
 That said, the element does not do any complex DOM operations or use any fancy APIs (except for web components, of course), so adapting it, if needed, will be simple. The element has been adapted for usage with the ShadyDOM polyfill.
 
 ## Performance
-The element preloads images before displaying them so that FOUCs are prevented. This also works across different image lists.
+The element makes careful use of composition layers and uses CSS 3D transforms and opacity animations exclusively. As such, animations will run butter smooth even when expensive filters are applied to the images.
+
+The element also preloads images before displaying them so that FOUCs are prevented. This also works across different image lists. For optimal results, ensure the element has a nice background color as the element is transparent while the first image is loading.
 
 ## License
 MIT
