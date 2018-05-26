@@ -277,10 +277,12 @@ export default class KenBurnsCarousel extends HTMLElement {
 
             /*
              * Here we wrap the image element into a surrounding div that is promoted
-             * onto a separate GPU layer using `will-change: transform`. If the filter applied
-             * to the image using CSS var `img-filter` is expensive (such as `blur`) this
-             * leads the browser to pre-compute the image filter and only really apply the 3D
-             * transformation that is very cheap every frame.
+             * onto a separate GPU layer using `will-change: transform`. The wrapping div
+             * is then ken-burns-animated instead of the image itself.
+             *
+             * This leads the browser to pre-computing the image filter (--img-filter)
+             * instead of computing it every frame. This can be a massive performance boost
+             * if the filter is expensive.
              *
              * See https://developers.google.com/web/updates/2017/10/animated-blur for
              * more information.
