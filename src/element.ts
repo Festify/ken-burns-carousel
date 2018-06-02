@@ -38,6 +38,11 @@ template.innerHTML = `
         position: relative;
     }
 
+    div, img {
+        height: 100%;
+        width: 100%;
+    }
+
     div {
         position: absolute;
         will-change: transform;
@@ -45,9 +50,7 @@ template.innerHTML = `
 
     img {
         filter: var(--img-filter);
-        height: 100%;
         object-fit: cover;
-        width: 100%;
     }
 
     @keyframes fade-in {
