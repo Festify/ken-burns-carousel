@@ -10,6 +10,31 @@ A bare and extremely light web component that displays a set of images with a ke
 </p>
 
 ## Usage
+Import the JS:
+```js
+/*
+ * Importing directly from the element defines the element class
+ * and registers it with the global element registry with the tag
+ * name 'ken-burns-carousel'.
+ */
+import 'ken-burns-carousel';
+```
+
+Alternatively:
+
+```js
+/*
+ * In case the default name conflicts, you can import from
+ * 'ken-burns-element/dist/element'. This export _does not_ register
+ * the element with the element registry and allows you to choose
+ * a custom tag name.
+ */
+import KenBurnsElement from 'ken-burns-carousel/dist/element';
+
+customElements.define('custom-ken-burns-element-tag', KenBurnsElement);
+```
+
+Use the element in the DOM:
 ```html
 <!-- Set images to display via attribute (property is also supported) -->
 <ken-burns-carousel images="https://source.unsplash.com/Qh9Swf_8DyA https://source.unsplash.com/O453M2Liufs">
