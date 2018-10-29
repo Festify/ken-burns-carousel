@@ -1,0 +1,13 @@
+.travis.yml
+CODE_OF_CONDUCT.md
+rollup.config.js
+tsconfig.json
+tslint.json
+yarn-error.log
+
+.idea/
+.rpt2_cache/
+demo/
+dist/*.min.*
+dist/index.html
+src/
